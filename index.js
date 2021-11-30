@@ -85,20 +85,21 @@ function createEmployeeRecord ([firstName, familyName, title, payPerHour]) {
   allWagesFor.call(employeeRecord)
 
   function findEmployeeByFirstName (array, nameString) {
+    let empl
     array.forEach(employee => {
         if(employee.firstName === nameString) {
+            empl = employee
             return employee
         }
     })
+    return empl
   }
 
   function calculatePayroll (array) {
     return array.reduce((runningTotal, employeeRecord) => {
-      return runningTotal + allWagesFor(employeeRecord)
+      return runningTotal + allWagesFor.call(employeeRecord)
     }, 0)
   }
-
-  calculatePayroll.call(employeeRecords)
 
 
 /*
